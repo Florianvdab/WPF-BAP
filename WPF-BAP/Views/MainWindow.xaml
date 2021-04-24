@@ -1,0 +1,158 @@
+﻿<Window x:Class="WPF_BAP.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_BAP" xmlns:local1="clr-namespace:WPF_BAP.ViewModels"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="" Height="650" Width="1020" Background="White">
+    <Window.DataContext>
+        <local1:MainViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45*"></RowDefinition>
+            <RowDefinition Height="202*"></RowDefinition>
+            <RowDefinition Height="187*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="11*"></ColumnDefinition>
+                <ColumnDefinition Width="5*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Row="0" Margin="15,0,0,0" Grid.Column="0" FontSize="30" Text="Applicatie - Artikelzoekscherm"></TextBlock>
+            <Button Grid.Column="1" Width="150" Content="Add Article" Margin="0,5,15,5" Command="{Binding AddArticleCommand}"></Button>
+        </Grid>
+
+        <Grid Margin="0,4,0,0" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <DataGrid Margin="15" ItemsSource="{Binding Instance.Articles}" AutoGenerateColumns="False" SelectedItem="{Binding SelectedArticle}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn IsReadOnly="True"  Header="Artikel" Width="50*" Binding="{Binding Artikel}">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="Margin" Value="6" />
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn  Header="Kassa (Nederlands)" Width="75*" Binding="{Binding KassaNed}">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="Margin" Value="6" />
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn IsReadOnly="True"  Header="Kassa (Frans)" Width="75*" Binding="{Binding KassaFr}">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="Margin" Value="6" />
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn IsReadOnly="True"  Header="Kwaliteit" Width="100*" Binding="{Binding Kwaliteit}">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="Margin" Value="6" />
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn IsReadOnly="True"  Header="Publi Date" Width="50*" Binding="{Binding PubliDate}">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="Margin" Value="6" />
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn IsReadOnly="True"  Header="Verkoopprijs" Width="50*" Binding="{Binding VkpEur}">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="Margin" Value="6" />
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn IsReadOnly="True"  Header="Hoofdgroep" Width="50*" Binding="{Binding Hoofdgroep}">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="Margin" Value="6" />
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn IsReadOnly="True"  Header="Seizoen" Width="50*" Binding="{Binding Seizoen}">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="Margin" Value="6" />
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+        <Grid Grid.Row="2" Height="273" VerticalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="63*"></ColumnDefinition>
+                <ColumnDefinition Width="97*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Image Source="{Binding SelectedArticle.URI}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <Grid Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="20"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="20"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="8*"></RowDefinition>
+                    <RowDefinition Height="8*"></RowDefinition>
+                    <RowDefinition Height="8*"></RowDefinition>
+                    <RowDefinition Height="8*"></RowDefinition>
+                    <RowDefinition Height="8*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Label VerticalAlignment="Center" Content="Artikel ID" Grid.Column="0" Height="26" Grid.ColumnSpan="2" ></Label>
+                <TextBox Grid.Column="1" TextAlignment="Center" VerticalAlignment="Center" Foreground="Black" Background="#F0F0F0" Text="{Binding SelectedArticle.Artikel}" Height="24" />
+
+                <Label VerticalAlignment="Center" Content="Kassa NED" Grid.Row="1" Grid.Column="0" Height="26" Grid.ColumnSpan="2" ></Label>
+                <TextBox Grid.Row="1" Grid.Column="1" TextAlignment="Center" VerticalAlignment="Center" Foreground="Black" Background="#F0F0F0" Text="{Binding SelectedArticle.KassaNed}" Height="24" ></TextBox>
+
+                <Label VerticalAlignment="Center" Content="Kassa FR" Grid.Row="2" Grid.Column="0" Height="26" Grid.ColumnSpan="2" ></Label>
+                <TextBox Grid.Row="2" Grid.Column="1" TextAlignment="Center" VerticalAlignment="Center" Foreground="Black" Background="#F0F0F0" Text="{Binding SelectedArticle.KassaFr}" Height="26" ></TextBox>
+
+                <Label VerticalAlignment="Center" Content="Kwaliteit" Grid.Row="3" Grid.Column="0" Height="26" Grid.ColumnSpan="2" ></Label>
+                <TextBox Grid.Row="3" Grid.Column="1" TextAlignment="Center" VerticalAlignment="Center" Foreground="Black" Background="#F0F0F0" Text="{Binding SelectedArticle.Kwaliteit}" Height="50" HorizontalScrollBarVisibility="Visible" />
+
+                <Label VerticalAlignment="Center" Content="Publi Date" Grid.Column="2" Height="26" Grid.ColumnSpan="3" />
+                <TextBox Grid.Column="4" TextAlignment="Center" VerticalAlignment="Center" Foreground="Black" Background="#F0F0F0" Text="{Binding SelectedArticle.PubliDate}" Height="24" />
+
+                <Label VerticalAlignment="Center" Content="VKP - EUR" Grid.Row="1" Grid.Column="2" Height="26" Grid.ColumnSpan="3" ></Label>
+                <TextBox Grid.Row="1" Grid.Column="4" TextAlignment="Center" VerticalAlignment="Center" Foreground="Black" Background="#F0F0F0" Text="{Binding SelectedArticle.VkpEur}" Height="24" ></TextBox>
+
+                <Label VerticalAlignment="Center" Content="Hoofdgroep" Grid.Row="2" Grid.Column="2" Height="26" Grid.ColumnSpan="3" ></Label>
+                <TextBox Grid.Row="2" Grid.Column="4" TextAlignment="Center" VerticalAlignment="Center" Foreground="Black" Background="#F0F0F0" Text="{Binding SelectedArticle.Hoofdgroep}" Height="26" ></TextBox>
+
+                <Label VerticalAlignment="Center" Content="Seizoen" Grid.Row="3" Grid.Column="2" Height="26" Grid.ColumnSpan="3" ></Label>
+                <TextBox TextWrapping="Wrap" Grid.Row="3" Grid.Column="4" TextAlignment="Center" VerticalAlignment="Center" Foreground="Black" Background="#F0F0F0" Text="{Binding SelectedArticle.Seizoen}" Height="26" ></TextBox>
+
+                <Button Grid.Row="4" Grid.Column="0" Margin="5,5,5,10" Width="100" Content="Save Changes" Command="{Binding SaveCommand}"></Button>
+                <Button Grid.Row="4" Grid.Column="1" Margin="5,5,5,10" Width="100" Content="Delete Article" Command="{Binding DeleteCommand}"></Button>
+                <TextBlock TextWrapping="Wrap" Foreground="Red" FontSize="15" 
+                           Grid.Row="4" Grid.Column="2" 
+                           Height="20" Width="20"
+                           Grid.ColumnSpan="3" Text="{Binding Error}" 
+                           Margin="20,0,0,0"></TextBlock>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
